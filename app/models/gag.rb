@@ -1,0 +1,2 @@
+class Gag < ApplicationRecord
+end
