@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rule_description: MyText
+  score_target: 1
+  result: one
+
+two:
+  rule_description: MyText
+  score_target: 1
+  result: two
