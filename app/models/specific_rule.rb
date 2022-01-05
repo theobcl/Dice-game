@@ -1,0 +1,2 @@
+class SpecificRule < ApplicationRecord
+end
