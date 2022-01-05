@@ -1,3 +1,3 @@
 class Game < ApplicationRecord
-  belongs_to :room_id
+  belongs_to :room
 end

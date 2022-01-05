@@ -1,14 +1,14 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  room_id: one
+  room: one
   game_name: MyString
   link: MyString
   player_count: 1
   number_of_rounds: 1
 
 two:
-  room_id: two
+  room: two
   game_name: MyString
   link: MyString
   player_count: 1
