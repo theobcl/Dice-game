@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :rooms
   has_many :games, through: :rooms
+
+  validates :first_name, uniqueness: { scope: :last_name }
+  validates :nick_name, uniqueness: true, length: { minimum: 2 }
 end
