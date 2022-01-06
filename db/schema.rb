@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 2022_01_05_173947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "challenges", force: :cascade do |t|
+    t.bigint "game_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "gag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["gag_id"], name: "index_challenges_on_gag_id"
+    t.index ["game_id"], name: "index_challenges_on_game_id"
+    t.index ["user_id"], name: "index_challenges_on_user_id"
+  end
 
   create_table "gags", force: :cascade do |t|
     t.text "description"
@@ -29,6 +41,16 @@
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["room_id"], name: "index_games_on_room_id"
+  end
+
+  create_table "results", force: :cascade do |t|
+    t.integer "score_dice"
+    t.bigint "user_id", null: false
+    t.bigint "game_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["game_id"], name: "index_results_on_game_id"
+    t.index ["user_id"], name: "index_results_on_user_id"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -59,7 +81,12 @@
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "challenges", "gags"
+  add_foreign_key "challenges", "games"
+  add_foreign_key "challenges", "users"
   add_foreign_key "games", "rooms"
+  add_foreign_key "results", "games"
+  add_foreign_key "results", "users"
   add_foreign_key "rooms", "users"
   add_foreign_key "specific_rules", "results"
 end
